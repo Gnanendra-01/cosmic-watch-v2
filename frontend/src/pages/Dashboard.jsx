@@ -1,3 +1,19 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 export default function Dashboard() {
-  return <h1>Dashboard</h1>;
+  const [asteroids, setAsteroids] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/asteroids/feed")
+      .then(res => setAsteroids(res.data));
+  }, []);
+
+  return (
+    <select>
+      {asteroids.map(a => (
+        <option key={a.id}>{a.name}</option>
+      ))}
+    </select>
+  );
 }
