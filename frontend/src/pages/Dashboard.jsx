@@ -12,7 +12,10 @@ export default function Dashboard() {
   return (
     <select>
       {asteroids.map(a => (
-        <option key={a.id}>{a.name}</option>
+        <div key={a.id}>
+            <span>{a.name} - Risk: {a.risk}</span>
+            <button>Add</button>
+            </div>
       ))}
     </select>
   );
